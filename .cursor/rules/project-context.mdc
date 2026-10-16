@@ -1,0 +1,25 @@
+---
+description: Portfolio project stack and file map
+alwaysApply: true
+---
+
+# Project context
+
+Single-page personal portfolio (Jian De Guzman). No backend, no router, no tests.
+
+## Stack
+- React 18 + Vite 5 (JS/JSX, ES modules — no TypeScript)
+- Tailwind CSS 3 (custom theme colors like `bg-canvas`, `text-ink`, `bg-keyword` in `tailwind.config.js`)
+- framer-motion for animation; lucide-react and react-icons for icons
+- Scripts: `npm run dev`, `npm run build`, `npm run preview`
+
+## File map
+- `src/main.jsx` — entry point
+- `src/App.jsx` — page layout; renders sections in order: Nav, Hero, About, Skills, Projects, Experience, Contact, Footer
+- `src/components/*.jsx` — one component per section (names match the list above)
+- `src/data/content.js` — all site content (profile, about, skills, projects, experience, etc.)
+- `src/index.css` — Tailwind directives and global styles
+- `public/` — static assets (e.g. `/me.jpg`)
+
+## Layout notes
+- `Nav` is a fixed sidebar on `sm+` (main has `sm:pl-56`) and a bottom tab bar on mobile (main has `pb-16`).

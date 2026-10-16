@@ -1,0 +1,23 @@
+---
+description: Keep token usage low when reading code and replying
+alwaysApply: true
+---
+
+# Token-saving rules
+
+## Reading files
+- Never open `node_modules/`, `dist/`, `package-lock.json`, or binary/image files in `public/`.
+- Search (Grep/Glob) before reading. Read only the relevant line range of a file, not the whole file, when it is long.
+- Don't re-read a file already read in this conversation unless it may have changed.
+- Rely on `project-context.mdc` for stack and layout instead of exploring the repo.
+- Content/copy changes (text, links, projects, skills, experience) belong in `src/data/content.js` — go there first.
+
+## Editing
+- Make targeted edits (StrReplace) instead of rewriting whole files.
+- Don't add new dependencies when an existing one (framer-motion, lucide-react, react-icons, Tailwind) covers the need.
+
+## Replying
+- Be concise. Skip preambles and recaps of what the user said.
+- Show only changed snippets, never full unchanged files.
+- Don't explain basic React/Tailwind concepts unless asked.
+- Skip running builds or dev servers unless needed to verify a change.
