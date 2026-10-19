@@ -241,11 +241,8 @@ export default function ProjectDetails({ projects, index, sharedFrom, onClose, o
             onClick={(e) => e.stopPropagation()}
             className="relative mx-auto w-full max-w-4xl min-h-full sm:min-h-0 sm:rounded-2xl border-line sm:border bg-surface shadow-2xl shadow-black/40 overflow-hidden"
           >
-            <div className="sticky top-0 z-10 flex items-center gap-1.5 px-3 py-2 border-b border-line bg-surface/95 backdrop-blur">
-              <span className="h-2.5 w-2.5 rounded-full bg-line" />
-              <span className="h-2.5 w-2.5 rounded-full bg-line" />
-              <span className="h-2.5 w-2.5 rounded-full bg-line" />
-              <span className="ml-3 min-w-0 truncate text-xs text-muted">{project.name}</span>
+            <div className="sticky top-0 z-10 flex items-center gap-1.5 px-4 py-2 border-b border-line bg-surface/95 backdrop-blur">
+              <span className="min-w-0 truncate text-xs text-muted">{project.name}</span>
               <div className="ml-auto flex items-center gap-0.5">
                 <span className="mr-1 text-xs text-faint tabular-nums">
                   {index + 1} / {projects.length}

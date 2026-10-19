@@ -41,11 +41,8 @@ export default function Lightbox({ image, onClose }) {
             onClick={(e) => e.stopPropagation()}
             className="relative max-w-4xl w-full rounded-lg border border-line bg-surface overflow-hidden shadow-2xl shadow-black/40"
           >
-            <div className="flex items-center gap-1.5 px-3 py-2 border-b border-line">
-              <span className="h-2.5 w-2.5 rounded-full bg-line" />
-              <span className="h-2.5 w-2.5 rounded-full bg-line" />
-              <span className="h-2.5 w-2.5 rounded-full bg-line" />
-              <figcaption className="ml-3 min-w-0 truncate text-xs text-muted">{image.alt}</figcaption>
+            <div className="flex items-center gap-1.5 px-4 py-2 border-b border-line">
+              <figcaption className="min-w-0 truncate text-xs text-muted">{image.alt}</figcaption>
               <button
                 type="button"
                 onClick={onClose}

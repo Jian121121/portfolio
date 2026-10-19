@@ -17,11 +17,6 @@ function Screenshot({ project, hidden }) {
   const slug = slugOf(project)
   return (
     <div className="relative h-full flex flex-col rounded-lg border border-line bg-canvas overflow-hidden shadow-xl shadow-black/10">
-      <div className="shrink-0 flex items-center gap-1.5 px-3 py-2 border-b border-line bg-surface">
-        <span className="h-2.5 w-2.5 rounded-full bg-line" />
-        <span className="h-2.5 w-2.5 rounded-full bg-line" />
-        <span className="h-2.5 w-2.5 rounded-full bg-line" />
-      </div>
       <motion.div
         layoutId={`shot-${slug}`}
         transition={{ duration: 0.45, ease }}
