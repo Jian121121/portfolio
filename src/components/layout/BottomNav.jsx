@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import useActiveSection from '../../hooks/useActiveSection'
 import { indicatorSpring } from '../../lib/motion'
-import { tabs, tabIds } from './navTabs'
+import { tabs, sectionIds } from './navTabs'
 
 export default function BottomNav() {
-  const active = useActiveSection(tabIds)
+  const section = useActiveSection(sectionIds)
+  const active = tabs.find((t) => t.id === section || t.covers?.includes(section))?.id
 
   return (
     /* Mobile: fixed bottom tab bar, thumb-reachable */
@@ -17,7 +18,7 @@ export default function BottomNav() {
             <a
               key={tab.id}
               href={`#${tab.id}`}
-              className={`relative flex-1 flex flex-col items-center gap-1 py-2.5 text-[10px] font-mono transition-colors ${
+              className={`relative flex-1 flex flex-col items-center gap-1 py-2.5 text-[10px] font-medium transition-colors ${
                 isActive ? 'text-ink' : 'text-muted'
               }`}
             >
@@ -33,7 +34,7 @@ export default function BottomNav() {
                 strokeWidth={1.75}
                 className={`transition-colors ${isActive ? 'text-string' : 'text-faint'}`}
               />
-              {tab.label.replace('.js', '')}
+              {tab.label}
             </a>
           )
         })}

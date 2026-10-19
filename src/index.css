@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* Vertical rhythm for every page section — adjacent sections sum to the visible gap */
+  .section-y {
+    @apply py-10 sm:py-12;
+  }
+}
+
+:root {
+  color-scheme: light;
+  --canvas: 246 247 249;
+  --surface: 255 255 255;
+  --surface2: 238 241 245;
+  --line: 220 225 232;
+  --ink: 22 27 34;
+  --muted: 87 96 106;
+  --faint: 125 133 144;
+  --keyword: 130 80 223;
+  --string: 26 127 55;
+  --func: 9 105 218;
+  --warn: 154 103 0;
+}
+
+.dark {
+  color-scheme: dark;
+  --canvas: 12 15 20;
+  --surface: 18 22 29;
+  --surface2: 23 28 37;
+  --line: 35 41 53;
+  --ink: 221 227 236;
+  --muted: 124 134 149;
+  --faint: 75 83 97;
+  --keyword: 199 146 234;
+  --string: 126 231 135;
+  --func: 121 192 255;
+  --warn: 242 184 75;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -13,17 +50,18 @@ html.lenis {
 
 body {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background-color: #C792EA;
-  color: #0C0F14;
+  background-color: rgb(var(--keyword));
+  color: rgb(var(--canvas));
 }
 
 /* visible keyboard focus everywhere */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #79C0FF;
+  outline: 2px solid rgb(var(--func));
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -32,10 +70,10 @@ button:focus-visible {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0C0F14;
+  background: rgb(var(--canvas));
 }
 ::-webkit-scrollbar-thumb {
-  background: #232935;
+  background: rgb(var(--line));
   border-radius: 999px;
 }
 
@@ -45,6 +83,15 @@ button:focus-visible {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@keyframes gallery-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

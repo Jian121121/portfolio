@@ -1,59 +1,82 @@
-import { motion } from 'framer-motion'
-import { about, profile } from '../data/content'
-import FallbackImage from './FallbackImage'
-import { reveal, fadeUp, stagger } from '../lib/motion'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Footprints, BookOpen, Languages } from 'lucide-react'
+import { about } from '../data/content'
+import Tabs from './Tabs'
+import SectionHeading from './SectionHeading'
+import { reveal, fadeUp, stagger, item } from '../lib/motion'
 
-export default function About() {
+const ITEM_ICONS = { run: Footprints, book: BookOpen, translate: Languages }
+
+function Panel({ tab }) {
   return (
-    <section id="about" className="py-28 border-t border-line scroll-mt-16">
+    <motion.div
+      initial="hidden"
+      animate="show"
+      exit={{ opacity: 0, y: -8, transition: { duration: 0.15 } }}
+      variants={stagger(0.07)}
+      className="flex flex-col gap-5"
+    >
+      {tab.body?.map((p, i) => (
+        <motion.p key={i} variants={fadeUp} className="text-base sm:text-lg leading-relaxed text-ink">
+          {p}
+        </motion.p>
+      ))}
+
+      {tab.items && (
+        <ul className="flex flex-col gap-4">
+          {tab.items.map((it) => {
+            const Icon = ITEM_ICONS[it.icon]
+            return (
+              <motion.li key={it.text} variants={item} className="flex items-start gap-3 text-base text-muted">
+                {Icon ? (
+                  <Icon size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-string" />
+                ) : (
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-string" />
+                )}
+                {it.text}
+              </motion.li>
+            )
+          })}
+        </ul>
+      )}
+
+      {tab.updated && (
+        <motion.p variants={item} className="flex items-center gap-2 text-xs text-faint">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-string opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-string" />
+          </span>
+          Updated {tab.updated}
+        </motion.p>
+      )}
+    </motion.div>
+  )
+}
+
+export default function About({ n }) {
+  const [active, setActive] = useState(about.tabs[0].id)
+  const tab = about.tabs.find((t) => t.id === active)
+
+  return (
+    <section id="about" className="section-y">
       <div className="max-w-content mx-auto px-5 sm:px-10">
-        <span className="font-mono text-sm text-faint select-none block mb-10">// about</span>
+        <SectionHeading n={n} title="about" />
 
-        <div className="grid md:grid-cols-[240px_minmax(0,1fr)] gap-10 md:gap-14 items-start">
-          <motion.div {...reveal} variants={fadeUp} className="relative w-full max-w-[240px]">
-            {/* offset frame behind the photo, like a diff-highlighted block */}
-            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg border border-string/40" />
-            <div className="relative rounded-lg border border-line bg-surface overflow-hidden">
-              <div className="flex items-center gap-1.5 px-3 py-2 border-b border-line">
-                <span className="h-2.5 w-2.5 rounded-full bg-line" />
-                <span className="h-2.5 w-2.5 rounded-full bg-line" />
-                <span className="h-2.5 w-2.5 rounded-full bg-line" />
-                <span className="ml-auto font-mono text-[10px] text-faint">me.jpg</span>
-              </div>
-              <FallbackImage
-                src={about.image}
-                alt={profile.name}
-                className="w-full aspect-[4/5] object-cover"
-                fallback={
-                  <div
-                    role="img"
-                    aria-label={profile.name}
-                    className="w-full aspect-[4/5] flex items-center justify-center bg-canvas font-mono text-5xl text-string select-none"
-                  >
-                    {profile.name
-                      .split(' ')
-                      .filter(Boolean)
-                      .map((w) => w[0])
-                      .slice(0, 2)
-                      .join('')}
-                  </div>
-                }
-              />
-            </div>
-          </motion.div>
+        <motion.div {...reveal} variants={fadeUp}>
+          <Tabs tabs={about.tabs} active={active} onChange={setActive} layoutId="about-tab" label="About me" />
 
-          <motion.div {...reveal} variants={stagger(0.12, 0.1)} className="flex flex-col gap-4">
-            {about.paragraphs.map((p, i) => (
-              <motion.p
-                key={i}
-                variants={fadeUp}
-                className="text-lg sm:text-xl leading-relaxed text-ink font-sans max-w-content"
-              >
-                {p}
-              </motion.p>
-            ))}
-          </motion.div>
-        </div>
+          <div
+            id="about-tab-panel"
+            role="tabpanel"
+            aria-labelledby={`about-tab-tab-${active}`}
+            className="mt-8 min-h-[13rem]"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <Panel key={active} tab={tab} />
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

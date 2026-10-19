@@ -3,12 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jian De Guzman </title>
-    <meta name="description" content="Jian De Guzman" />
+    <title>Jian De Guzman — Full-stack Developer & Project Lead</title>
+    <meta
+      name="description"
+      content="Portfolio of Jian De Guzman, a BSIT student at NU Baliwag building websites, web & mobile apps, and capstone systems. Open for commissions."
+    />
+    <meta name="theme-color" content="#0c0f14" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jian De Guzman" />
+    <meta property="og:title" content="Jian De Guzman — Full-stack Developer & Project Lead" />
+    <meta
+      property="og:description"
+      content="Websites, web & mobile apps, and capstone systems. Open for commissions."
+    />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jian De Guzman — Full-stack Developer & Project Lead, open for commissions" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jian De Guzman — Full-stack Developer & Project Lead" />
+    <meta name="twitter:description" content="Websites, web & mobile apps, and capstone systems. Open for commissions." />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og.png" />
+    <script>
+      // Set the theme before first paint so the page never flashes the wrong one
+      try {
+        var t = localStorage.getItem('theme')
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        document.documentElement.classList.toggle('dark', t === 'dark')
+      } catch (e) {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>

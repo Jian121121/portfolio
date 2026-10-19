@@ -1,112 +1,163 @@
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { profile } from '../data/content'
-import { ease, tap } from '../lib/motion'
+import { ArrowRight, FileText, Mail, MapPin, Search } from 'lucide-react'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { about, profile } from '../data/content'
+import HeroPhoto from './HeroPhoto'
+import { openPalette, shortcut } from './CommandPalette'
+import LiveViewers from './layout/LiveViewers'
+import { ease, stagger, fadeUp, item, tap } from '../lib/motion'
 
-// Lines rendered as a typed-out JS object literal.
-function useTypewriter(lines, speed = 18) {
-  const [doneLines, setDoneLines] = useState([])
-  const [currentText, setCurrentText] = useState('')
-  const [lineIndex, setLineIndex] = useState(0)
+const initials = profile.name
+  .split(' ')
+  .filter(Boolean)
+  .map((w) => w[0])
+  .slice(0, 2)
+  .join('')
 
-  useEffect(() => {
-    if (lineIndex >= lines.length) return
-    const full = lines[lineIndex].text
-    if (currentText.length < full.length) {
-      const t = setTimeout(() => setCurrentText(full.slice(0, currentText.length + 1)), speed)
-      return () => clearTimeout(t)
-    }
-    const t = setTimeout(() => {
-      setDoneLines((d) => [...d, lines[lineIndex]])
-      setCurrentText('')
-      setLineIndex((i) => i + 1)
-    }, 150)
-    return () => clearTimeout(t)
-  }, [currentText, lineIndex, lines, speed])
+const links = [
+  profile.linkedin && { label: 'LinkedIn', icon: FaLinkedin, href: profile.linkedin },
+  profile.github && { label: 'GitHub', icon: FaGithub, href: profile.github },
+  profile.email && { label: `Email ${profile.email}`, icon: Mail, href: `mailto:${profile.email}` },
+].filter(Boolean)
 
-  return { doneLines, currentText, lineIndex }
-}
-
-export default function Hero() {
-  const lines = [
-    { indent: 1, text: `name: "${profile.name}",`, color: 'text-string' },
-    { indent: 1, text: `role: "${profile.role}",`, color: 'text-string' },
-    { indent: 1, text: `location: "${profile.location}",`, color: 'text-string' },
-    { indent: 1, text: `available: true,`, color: 'text-func' },
-  ]
-  const { doneLines, currentText, lineIndex } = useTypewriter(lines)
-  const typingCurrent = lineIndex < lines.length
-
+export default function Hero({ hideName = false }) {
   return (
-    <section className="min-h-screen flex items-center">
-      <div className="max-w-content mx-auto px-5 sm:px-10 w-full">
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease }}
-          className="font-mono text-sm text-muted mb-4"
-        >
-          hero.js
-        </motion.p>
+    <section id="top" className="relative overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgb(var(--line))_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_70%)]"
+      />
 
-        <div className="font-mono text-lg sm:text-2xl leading-relaxed">
-          <div>
-            <span className="text-keyword">const</span>{' '}
-            <span className="text-ink">engineer</span> ={' '}
-            <span className="text-ink">{'{'}</span>
-          </div>
+      <div className="relative max-w-content mx-auto px-5 sm:px-10 pt-20 lg:pt-28 pb-10 grid sm:grid-cols-[minmax(0,1fr)_190px] gap-8 sm:gap-10 items-center">
+        <motion.div initial="hidden" animate="show" variants={stagger(0.1, 0.1)} className="min-w-0">
+          <LiveViewers className="lg:hidden mb-4" />
+          <motion.h1
+            id="hero-name"
+            variants={fadeUp}
+            style={hideName ? { visibility: 'hidden' } : undefined}
+            className="text-4xl sm:text-5xl font-bold tracking-tight text-ink leading-[1.05]"
+          >
+            {profile.name}
+          </motion.h1>
 
-          {doneLines.map((l, i) => (
-            <div key={i} className="pl-6">
-              <span className={l.color}>{l.text}</span>
-            </div>
-          ))}
+          <motion.div variants={fadeUp} className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            <span className="text-string font-medium">{profile.role}</span>
+            <span className="flex items-center gap-1.5 text-muted">
+              <MapPin size={14} strokeWidth={1.75} className="text-faint" />
+              {profile.location}
+            </span>
+          </motion.div>
 
-          {typingCurrent && (
-            <div className="pl-6">
-              <span className={lines[lineIndex].color}>{currentText}</span>
-              <span className="inline-block w-[0.55ch] h-[1em] bg-ink align-middle ml-0.5 animate-pulse" />
-            </div>
+          <motion.p variants={fadeUp} className="mt-5 max-w-md text-muted leading-relaxed">
+            {profile.tagline}
+          </motion.p>
+
+          {(profile.availability || profile.badges?.length > 0) && (
+            <motion.ul variants={stagger(0.05)} className="mt-5 flex flex-wrap gap-2">
+              {profile.availability && (
+                <motion.li variants={item}>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 rounded-full border border-string/40 bg-string/10 px-3 py-1 text-xs font-medium text-ink hover:border-string transition-colors"
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-string opacity-75 motion-safe:animate-ping" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-string" />
+                    </span>
+                    {profile.availability}
+                  </a>
+                </motion.li>
+              )}
+              {profile.badges?.map((b) => (
+                <motion.li
+                  key={b}
+                  variants={item}
+                  className="rounded-full border border-line bg-surface px-3 py-1 text-xs text-muted"
+                >
+                  {b}
+                </motion.li>
+              ))}
+            </motion.ul>
           )}
 
-          <div>
-            <span className="text-ink">{'}'}</span>
-          </div>
-        </div>
+          <motion.div variants={fadeUp} className="mt-6 flex flex-wrap items-center gap-2.5 text-sm">
+            <motion.a
+              href="#contact"
+              whileHover={{ y: -2 }}
+              whileTap={tap}
+              className="inline-flex h-10 items-center gap-2 rounded-full bg-ink px-5 font-medium text-canvas hover:opacity-90 transition-opacity"
+            >
+              Hire me
+              <ArrowRight size={15} />
+            </motion.a>
+            {profile.resume && (
+              <motion.a
+                href={profile.resume}
+                download="Jian-De-Guzman-CV.pdf"
+                whileHover={{ y: -2 }}
+                whileTap={tap}
+                className="inline-flex h-10 items-center gap-2 rounded-full border border-line px-5 font-medium text-ink hover:border-faint transition-colors"
+              >
+                <FileText size={15} />
+                Download CV
+              </motion.a>
+            )}
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.6, ease }}
-          className="mt-8 max-w-md text-muted font-sans text-base sm:text-lg"
-        >
-          {profile.tagline}
-        </motion.p>
+          <motion.div variants={fadeUp} className="mt-3 flex flex-wrap items-center gap-2.5 text-sm">
+            {links.map(({ label, icon: Icon, href }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noreferrer' : undefined}
+                aria-label={label}
+                title={label}
+                whileHover={{ y: -3 }}
+                whileTap={tap}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-muted hover:text-func hover:border-func transition-colors"
+              >
+                <Icon size={17} />
+              </motion.a>
+            ))}
+            <button
+              type="button"
+              onClick={openPalette}
+              className="ml-1 inline-flex h-10 items-center gap-2 rounded-full border border-line px-4 text-faint hover:text-ink hover:border-faint transition-colors"
+            >
+              <Search size={13} />
+              Ask anything
+              <kbd className="hidden sm:inline font-sans text-[11px] text-faint">{shortcut}</kbd>
+            </button>
+          </motion.div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6, duration: 0.6, ease }}
-          className="mt-8 flex flex-wrap gap-3 font-mono text-sm"
+          transition={{ delay: 0.3, duration: 0.6, ease }}
+          className="relative order-first sm:order-last w-36 sm:w-full"
         >
-          <motion.a
-            href="#projects"
-            whileHover={{ y: -2 }}
-            whileTap={tap}
-            className="px-4 py-2 border border-line rounded-md text-ink hover:border-func hover:text-func transition-colors"
-          >
-            View projects
-          </motion.a>
-          <motion.a
-            href="#contact"
-            whileHover={{ y: -2 }}
-            whileTap={tap}
-            className="px-4 py-2 border border-line rounded-md text-ink hover:border-string hover:text-string transition-colors"
-          >
-            Get in touch
-          </motion.a>
+          <HeroPhoto src={about.image} alt={profile.name} initials={initials} />
         </motion.div>
       </div>
+
+      {profile.stats?.length > 0 && (
+        <motion.dl
+          initial="hidden"
+          animate="show"
+          variants={stagger(0.08, 0.5)}
+          className="relative max-w-content mx-auto px-5 sm:px-10 pb-6 grid grid-cols-3"
+        >
+          {profile.stats.map((s) => (
+            <motion.div key={s.label} variants={item} className="border-t border-line pt-4 pr-3">
+              <dt className="sr-only">{s.label}</dt>
+              <dd className="text-2xl font-bold tracking-tight text-ink">{s.value}</dd>
+              <dd className="text-xs sm:text-sm text-muted">{s.label}</dd>
+            </motion.div>
+          ))}
+        </motion.dl>
+      )}
     </section>
   )
 }
