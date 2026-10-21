@@ -67,13 +67,13 @@ export function GroupLabel({ children }) {
   return <h3 className="mt-10 [div+&]:mt-0 mb-1 text-xs font-medium uppercase tracking-wider text-faint">{children}</h3>
 }
 
-function Bullets({ bullets, open }) {
+function Bullets({ bullets, open, order = 0 }) {
   return (
     <AnimatePresence initial={false}>
       {open && bullets?.length > 0 && (
         <motion.div
           initial={{ height: 0, opacity: 0 }}
-          animate={{ height: 'auto', opacity: 1 }}
+          animate={{ height: 'auto', opacity: 1, transition: { duration: 0.3, ease, delay: order * 0.15 } }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.3, ease }}
           className="overflow-hidden"
@@ -93,7 +93,7 @@ function Bullets({ bullets, open }) {
 }
 
 /** Compact "year · role · org" row; `leading` replaces the year column (e.g. a logo). */
-export function Row({ heading, sub, period, bullets, open, leading, trailing, showPeriod }) {
+export function Row({ heading, sub, period, bullets, open, order, leading, trailing, showPeriod }) {
   const current = isCurrent(period)
   return (
     <motion.li variants={item} className="flex gap-4 py-4 border-b border-line last:border-b-0">
@@ -117,7 +117,7 @@ export function Row({ heading, sub, period, bullets, open, leading, trailing, sh
           </div>
           {trailing}
         </div>
-        <Bullets bullets={bullets} open={open} />
+        <Bullets bullets={bullets} open={open} order={order} />
       </div>
     </motion.li>
   )

@@ -19,7 +19,7 @@ export default function Organizations({ n }) {
           }
         />
         <motion.ul {...reveal} variants={stagger(0.06)}>
-          {extracurriculars.map((ex) => (
+          {extracurriculars.map((ex, i) => (
             <Row
               key={ex.title + ex.org}
               heading={ex.title}
@@ -28,6 +28,7 @@ export default function Organizations({ n }) {
               showPeriod
               bullets={ex.bullets}
               open={open}
+              order={i}
               leading={<OrgLogo src={ex.logo} name={ex.org} />}
             />
           ))}

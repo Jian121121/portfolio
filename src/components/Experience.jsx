@@ -12,6 +12,7 @@ export default function Experience({ n }) {
   const [ref, open, setOpen] = useScrollOpen()
   const [preview, setPreview] = useState(null)
   const closePreview = useCallback(() => setPreview(null), [])
+  const projects = experience.filter((e) => e.type === 'project')
   const work = experience.filter((e) => e.type !== 'project')
 
   return (
@@ -29,21 +30,20 @@ export default function Experience({ n }) {
 
         <GroupLabel>Project experience</GroupLabel>
         <motion.ul {...reveal} variants={stagger(0.06)}>
-          {experience
-            .filter((e) => e.type === 'project')
-            .map((e) => (
-              <Row
-                key={e.title}
-                heading={e.title}
-                sub={e.org}
-                period={e.period}
-                bullets={e.bullets}
-                open={open}
-                showPeriod
-                leading={e.logo && <OrgLogo src={e.logo} name={e.org} bg={e.logoBg} boxed />}
-              />
-            ))}
-          {research.map((r) => (
+          {projects.map((e, i) => (
+            <Row
+              key={e.title}
+              heading={e.title}
+              sub={e.org}
+              period={e.period}
+              bullets={e.bullets}
+              open={open}
+              order={i}
+              showPeriod
+              leading={e.logo && <OrgLogo src={e.logo} name={e.org} bg={e.logoBg} boxed />}
+            />
+          ))}
+          {research.map((r, i) => (
             <Row
               key={r.title}
               heading={r.title}
@@ -51,6 +51,7 @@ export default function Experience({ n }) {
               period={r.date}
               bullets={r.bullets}
               open={open}
+              order={projects.length + i}
               showPeriod
               leading={r.image && <CertThumb src={r.image} name={`${r.title} — certificate`} onOpen={setPreview} />}
               trailing={<Verify verify={r.verify} />}
@@ -62,8 +63,8 @@ export default function Experience({ n }) {
           <>
             <GroupLabel>Work</GroupLabel>
             <motion.ul {...reveal} variants={stagger(0.06)}>
-              {work.map((e) => (
-                <Row key={e.title} heading={e.title} sub={e.org} period={e.period} bullets={e.bullets} open={open} />
+              {work.map((e, i) => (
+                <Row key={e.title} heading={e.title} sub={e.org} period={e.period} bullets={e.bullets} open={open} order={i} />
               ))}
             </motion.ul>
           </>
