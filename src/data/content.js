@@ -62,9 +62,7 @@ export const about = {
       label: 'Off the clock',
       items: [
         { icon: 'run', text: 'Running — usually the first thing on the calendar.' },
-        { icon: 'book', text: 'Reading about emerging tech and where it’s heading.' },
-        { icon: 'translate', text: 'Translating novels and web stories into English.' },
-      ],
+        { icon: 'book', text: 'Reading about emerging tech and where it’s heading.' },      ],
     },
     {
       id: 'now',
@@ -276,16 +274,6 @@ export const experience = [
       'Managed and coordinated development of a web and mobile smart recruitment and candidate screening platform.',
       'Led project planning, requirements gathering, and documentation.',
       'Coordinated team members and stakeholders through to the capstone defense.',
-    ],
-  },
-  {
-    title: 'Freelance Translator',
-    org: 'Self-Employed · Remote',
-    period: '2021',
-    bullets: [
-      'Translated novels and web stories into English.',
-      'Preserved the original meaning, tone, and context of the source material.',
-      'Met deadlines across multiple translation projects.',
     ],
   },
 ]

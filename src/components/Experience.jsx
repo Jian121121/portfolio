@@ -11,6 +11,7 @@ export default function Experience({ n }) {
   const [open, setOpen] = useState(false)
   const [preview, setPreview] = useState(null)
   const closePreview = useCallback(() => setPreview(null), [])
+  const work = experience.filter((e) => e.type !== 'project')
 
   return (
     <section id="experience" className="section-y">
@@ -56,14 +57,16 @@ export default function Experience({ n }) {
           ))}
         </motion.ul>
 
-        <GroupLabel>Work</GroupLabel>
-        <motion.ul {...reveal} variants={stagger(0.06)}>
-          {experience
-            .filter((e) => e.type !== 'project')
-            .map((e) => (
-              <Row key={e.title} heading={e.title} sub={e.org} period={e.period} bullets={e.bullets} open={open} />
-            ))}
-        </motion.ul>
+        {work.length > 0 && (
+          <>
+            <GroupLabel>Work</GroupLabel>
+            <motion.ul {...reveal} variants={stagger(0.06)}>
+              {work.map((e) => (
+                <Row key={e.title} heading={e.title} sub={e.org} period={e.period} bullets={e.bullets} open={open} />
+              ))}
+            </motion.ul>
+          </>
+        )}
 
         <GroupLabel>Education</GroupLabel>
         <motion.ul {...reveal} variants={stagger(0.06)}>
