@@ -48,7 +48,7 @@ export default function Experience({ n }) {
               heading={r.title}
               sub={`${r.role} · ${r.venue}`}
               period={r.date}
-              bullets={[r.description]}
+              bullets={r.bullets}
               open={open}
               showPeriod
               leading={r.image && <CertThumb src={r.image} name={`${r.title} — certificate`} onOpen={setPreview} />}

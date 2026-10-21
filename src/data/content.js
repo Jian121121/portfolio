@@ -25,10 +25,9 @@ export const profile = {
     'Software Development',
     'Artificial Intelligence',
     'Cybersecurity',
-    'UI/UX',
     'Project Management',
-    'Quality Assurance',
     'Running',
+    'Volleyball',
   ],
 }
 
@@ -62,6 +61,7 @@ export const about = {
       label: 'Off the clock',
       items: [
         { icon: 'run', text: 'Running — usually the first thing on the calendar.' },
+        { icon: 'volleyball', text: 'Playing volleyball with friends.' },
         { icon: 'book', text: 'Reading about emerging tech and where it’s heading.' },      ],
     },
     {
@@ -82,11 +82,11 @@ export const about = {
 export const skills = [
   {
     category: 'Programming',
-    items: ['JavaScript', 'Python', 'PHP', 'Java', 'Kotlin', 'Dart', 'Swift', 'Shell Script'],
+    items: ['JavaScript', 'React', 'Python', 'Java', 'Dart', 'PHP', 'Kotlin', 'Shell Script'],
   },
   {
     category: 'Web & Frameworks',
-    items: ['React', 'React Native', 'Node.js', 'Flutter', 'HTML5', 'CSS3', 'Tailwind CSS'],
+    items: ['React Native', 'Node.js', 'Flutter', 'HTML5', 'CSS3', 'Tailwind CSS'],
   },
   {
     category: 'Databases & Cloud',
@@ -148,7 +148,7 @@ export const projects = [
     name: 'E-NU Hire',
     year: '2025 — 2026',
     description:
-      "An AI-assisted faculty recruitment platform for NU Baliwag. It scores and ranks applicants against HR's weighted criteria, moves manpower requests through multi-level approvals, and generates printable hiring documents. Applicants and HR use the web app; academic officials use the Flutter app.",
+      "An AI-assisted faculty recruitment platform for NU Baliwag. It scores and ranks applicants against HR's weighted criteria, moves manpower requests through multi-level approvals, and generates printable hiring documents. Applicants and HR use the web app, while academic officials use the Flutter app.",
     tech: ['Flutter', 'HTML / CSS / JavaScript', 'Firebase', 'Cloud Functions', 'Groq (gpt-oss-120b)'],
     // Drop a screenshot in /public and point this at it, e.g. '/projects/ehire-landing.webp'
     image: '/projects/ehire-landing.webp',
@@ -269,11 +269,12 @@ export const experience = [
     logoBg: '#EEF1FA',
     // 'project' entries are listed under Project experience instead of Work
     type: 'project',
-    period: '2025 — 2026',
+    period: 'Aug 2025 — Oct 2026',
     bullets: [
-      'Managed and coordinated development of a web and mobile smart recruitment and candidate screening platform.',
-      'Led project planning, requirements gathering, and documentation.',
-      'Coordinated team members and stakeholders through to the capstone defense.',
+      'Led a 4-member team building a Flutter/Firebase web and mobile faculty recruitment platform with AI screening.',
+      'Arranged HR and stakeholder interviews for requirements; planned and tracked the project in Notion.',
+      'Scores applicants with gpt-oss-120b (Groq API) using HR-defined weighted criteria such as education and experience.',
+      'Evaluated by 106 respondents under ISO/IEC 25010, earning an overall mean rating of 4.23/5 (Strongly Agree).',
     ],
   },
 ]
@@ -285,8 +286,8 @@ export const extracurriculars = [
     logo: '/orgs/aws-sbg.png',
     period: 'Aug 2026 — Present',
     bullets: [
-      'Supports operations and execution of campus activities.',
-      'Plans workflows and coordinates members.',
+      'Helped run First Flight, the group’s first event, introducing 50+ students to cloud computing.',
+      'Coordinates members across campus activities.',
     ],
   },
   {
@@ -372,13 +373,15 @@ export const workshops = [
 export const research = [
   {
     title: 'JuanVenture: The Lost Artifact of the Archipelago',
-    role: 'Presenter',
+    role: 'Character Designer, Animator & Research Presenter',
     venue: 'International Research Conference on Information Technology Education (IRCITE 2026)',
     date: 'March 19, 2026',
     image: '/certs/ircite-cert.webp',
     verify: 'https://www.facebook.com/photo.php?fbid=1675276061272892&set=a.471113081689202&type=3',
-    description:
-      'Presented a research paper in the Information Technology track at an international conference held at Bulacan State University.',
+    bullets: [
+      'Designed characters and animated short videos for a 2D educational game on Philippine artifacts and folklore.',
+      'Co-authored the study (rated 4.49/5 by 62 respondents) and presented it at IRCITE 2026, Bulacan State University.',
+    ],
   },
 ]
 

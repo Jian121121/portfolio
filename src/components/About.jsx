@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Footprints, BookOpen, Languages } from 'lucide-react'
+import { Footprints, BookOpen, Volleyball } from 'lucide-react'
 import { about } from '../data/content'
 import Tabs from './Tabs'
 import SectionHeading from './SectionHeading'
 import { reveal, fadeUp, stagger, item } from '../lib/motion'
 
-const ITEM_ICONS = { run: Footprints, book: BookOpen, translate: Languages }
+const ITEM_ICONS = { run: Footprints, book: BookOpen, volleyball: Volleyball }
 
 function Panel({ tab }) {
   return (
