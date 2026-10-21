@@ -267,10 +267,9 @@ export const experience = [
     org: 'E-NU Hire — NU Baliwag',
     period: '2025 — 2026',
     bullets: [
-      'Led a cross-functional student team through planning, sprints, and delivery of a full-stack recruitment platform.',
-      'Coordinated the web and mobile workstreams, keeping the React frontend and Node/MySQL backend in sync.',
-      'Ran client-facing demos and translated feedback from advisers into scoped, actionable tasks.',
-      'Owned the project timeline and documentation through to a successful capstone defense.',
+      'Managed and coordinated development of a web and mobile smart recruitment and candidate screening platform.',
+      'Led project planning, requirements gathering, and documentation.',
+      'Coordinated team members and stakeholders through to the capstone defense.',
     ],
   },
   {
@@ -278,10 +277,9 @@ export const experience = [
     org: 'Self-Employed · Remote',
     period: '2021',
     bullets: [
-      'Translated novels and web stories from various languages into English.',
-      'Ensured translations were grammatically correct, natural, and easy to read.',
-      'Maintained the original meaning, tone, and context of the source material.',
-      'Met deadlines while handling multiple translation projects at once.',
+      'Translated novels and web stories into English.',
+      'Preserved the original meaning, tone, and context of the source material.',
+      'Met deadlines across multiple translation projects.',
     ],
   },
 ]
@@ -292,6 +290,10 @@ export const extracurriculars = [
     org: 'AWS Student Builder Group — NU Baliwag',
     logo: '/orgs/aws-sbg.png',
     period: 'Aug 2026 — Present',
+    bullets: [
+      'Supports operations and execution of campus activities.',
+      'Plans workflows and coordinates members.',
+    ],
   },
   {
     title: 'ICT Representative',
@@ -300,8 +302,8 @@ export const extracurriculars = [
     period: '2021 — 2022',
     bullets: [
       'Represented the ICT department in the Student Government.',
-      'Assisted in organizing student activities and events.',
-      'Coordinated communication between students and school officials.',
+      'Coordinated ICT department communications.',
+      'Organized student activities.',
     ],
   },
   {
@@ -310,9 +312,9 @@ export const extracurriculars = [
     logo: '/orgs/nu-literates.png',
     period: 'Jun 2025 — Feb 2026',
     bullets: [
-      'Assisted in organizing student activities and events.',
-      'Coordinated communication between members and organization officers.',
-      'Supported administrative tasks and promoted member engagement.',
+      'Managed administrative tasks.',
+      'Drove member engagement.',
+      'Coordinated events.',
     ],
   },
 ]
