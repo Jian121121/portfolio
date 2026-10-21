@@ -6,15 +6,16 @@ import { Row, GroupLabel, OrgLogo, CertThumb } from './Rows'
 import Lightbox from './Lightbox'
 import { Verify } from './Certifications'
 import { reveal, stagger } from '../lib/motion'
+import useScrollOpen from '../lib/useScrollOpen'
 
 export default function Experience({ n }) {
-  const [open, setOpen] = useState(false)
+  const [ref, open, setOpen] = useScrollOpen()
   const [preview, setPreview] = useState(null)
   const closePreview = useCallback(() => setPreview(null), [])
   const work = experience.filter((e) => e.type !== 'project')
 
   return (
-    <section id="experience" className="section-y">
+    <section ref={ref} id="experience" className="section-y">
       <div className="max-w-content mx-auto px-5 sm:px-10">
         <SectionHeading
           n={n}

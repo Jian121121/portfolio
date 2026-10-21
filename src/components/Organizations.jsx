@@ -1,15 +1,15 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { extracurriculars } from '../data/content'
 import SectionHeading, { HeadingAction } from './SectionHeading'
 import { Row, OrgLogo } from './Rows'
 import { reveal, stagger } from '../lib/motion'
+import useScrollOpen from '../lib/useScrollOpen'
 
 export default function Organizations({ n }) {
-  const [open, setOpen] = useState(false)
+  const [ref, open, setOpen] = useScrollOpen()
 
   return (
-    <section id="organizations" className="section-y">
+    <section ref={ref} id="organizations" className="section-y">
       <div className="max-w-content mx-auto px-5 sm:px-10">
         <SectionHeading
           n={n}
