@@ -272,7 +272,7 @@ export const experience = [
     period: 'Aug 2025 — Oct 2026',
     bullets: [
       'Led a 4-member team building a Flutter/Firebase web and mobile faculty recruitment platform with AI screening.',
-      'Arranged HR and stakeholder interviews for requirements; planned and tracked the project in Notion.',
+      'Conducted HR and stakeholder interviews for requirements; planned and tracked the project in Notion.',
       'Scores applicants with gpt-oss-120b (Groq API) using HR-defined weighted criteria such as education and experience.',
       'Evaluated by 106 respondents under ISO/IEC 25010, earning an overall mean rating of 4.23/5 (Strongly Agree).',
     ],
@@ -352,6 +352,15 @@ export const certifications = [
     date: 'April 30, 2026',
     image: '/certs/its-networking.webp',
     verify: { url: CERTIPORT_VERIFY, code: 'w6scz-485p' },
+  },
+]
+
+export const awards = [
+  {
+    name: 'AWS Student Builder Group Certificate of Achievement',
+    org: 'AWS Student Builder Group — NU Baliwag',
+    date: 'October 2026',
+    image: '/certs/aws-sbg-achievement.webp',
   },
 ]
 

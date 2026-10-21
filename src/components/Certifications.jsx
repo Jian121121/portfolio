@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
-import { certifications, workshops } from '../data/content'
+import { certifications, awards, workshops } from '../data/content'
 import SectionHeading from './SectionHeading'
 import Lightbox from './Lightbox'
 import { Row, GroupLabel, CertThumb } from './Rows'
@@ -93,6 +93,12 @@ export default function Certifications({ n }) {
           <>
             <GroupLabel>Workshops & events</GroupLabel>
             <List items={workshops} onOpen={setPreview} />
+          </>
+        )}
+        {awards.length > 0 && (
+          <>
+            <GroupLabel>Awards & recognition</GroupLabel>
+            <List items={awards} onOpen={setPreview} />
           </>
         )}
       </div>
