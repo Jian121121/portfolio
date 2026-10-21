@@ -51,8 +51,8 @@ export default function App() {
         {splash && <Splash onDone={() => setSplash(false)} />}
         <BottomNav />
         <CommandPalette sections={sections} theme={theme} setTheme={setTheme} />
-        {/* lg:pl-64 reserves space for the fixed sidebar; pb-16 below lg clears the bottom tab bar */}
-        <main className="lg:pl-64 pb-16 lg:pb-0">
+        {/* lg:pl-64 xl:pl-72 reserves space for the fixed sidebar; pb-16 below lg clears the bottom tab bar */}
+        <main className="lg:pl-64 xl:pl-72 pb-16 lg:pb-0">
           <Hero hideName={splash} />
           <About n={sectionNumber('about')} />
           <Skills n={sectionNumber('skills')} />

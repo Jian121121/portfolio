@@ -150,8 +150,8 @@ export const projects = [
     name: 'E-NU Hire',
     year: '2025 — 2026',
     description:
-      'NU Baliwag smart recruitment and candidate screening platform. Completed and successfully defended web & mobile capstone project covering applicant intake, automated screening, and hiring-team review tools.',
-    tech: ['React', 'React Native', 'Node.js', 'MySQL'],
+      "An AI-assisted faculty recruitment platform for NU Baliwag. It scores and ranks applicants against HR's weighted criteria, moves manpower requests through multi-level approvals, and generates printable hiring documents. Applicants and HR use the web app; academic officials use the Flutter app.",
+    tech: ['Flutter', 'HTML / CSS / JavaScript', 'Firebase', 'Cloud Functions', 'Groq (gpt-oss-120b)'],
     // Drop a screenshot in /public and point this at it, e.g. '/projects/ehire-landing.webp'
     image: '/projects/ehire-landing.webp',
     gallery: ['/projects/ehire-jobs.webp'],
@@ -163,18 +163,19 @@ export const projects = [
     link: 'https://smartrecruitment.web.app/splash.html',
     role: 'Project Manager',
     status: 'Completed & defended',
-    platform: 'Web & Mobile',
+    platform: 'Web, Android & iOS',
     // Shown in the project's details view; add extra screenshots with gallery: ['/projects/…', …]
     features: [
-      'Applicant intake on both web and mobile',
-      'Automated candidate screening',
-      'Review tools for the hiring team',
+      'AI candidate matching and ranking by weighted suitability score',
+      'Digital manpower requests with multi-level approvals',
+      'Automated faculty manpower projection from teaching loads',
+      'ID verification, document parsing, and printable hiring forms',
     ],
     // Optional Problem → Built → Result steps in the details view
     story: {
-      problem: "NU Baliwag's applicant screening was manual and slow.",
-      built: 'Web & mobile applicant intake, automated screening, and hiring-team review tools.',
-      result: 'Completed and successfully defended as our capstone.',
+      problem: 'NU Baliwag HR screened faculty applicants by hand, using paper forms, calls, and email.',
+      built: 'A web and mobile platform covering manpower requests, AI-assisted screening and ranking, interviews, and hiring documents.',
+      result: 'Defended capstone. Rated 4.23 / 5 (Strongly Agree) by 106 evaluators on ISO/IEC 25010.',
     },
   },
   {
@@ -213,7 +214,7 @@ export const projects = [
     name: 'BadyetKarga',
     year: '2026',
     description:
-      "A mobile app that helps Filipino families plan weekly meals on a budget. Set up your household with each member's allergies and diet, drag dishes from a Filipino recipe library into a weekly planner, and get a combined grocery list with estimated prices. It warns you when the plan goes over budget and suggests cheaper swaps. In Shopping Mode, you check items off and log what you actually paid, and each trip is saved to a spending dashboard.",
+      'An Android app that helps Filipino families plan weekly meals and stay within their grocery budget. It turns the meal plan into a priced grocery list, and when the total goes over budget, it suggests which items to remove, reduce, or swap. Meal planning and shopping work offline after login.',
     image: '/projects/badyetkarga-screens-1.webp',
     gallery: ['/projects/badyetkarga-screens-2.webp'],
     logo: '/projects/badyetkarga-logo.webp',
@@ -224,17 +225,18 @@ export const projects = [
     link: 'https://badyetkarga.vercel.app/',
     role: 'Solo Developer',
     status: 'Live',
-    platform: 'Mobile app',
+    platform: 'Android',
+    tech: ['React Native (Expo)', 'TypeScript', 'SQLite', 'Firebase Auth', 'Zustand'],
     features: [
-      'Weekly meal planner with a Filipino recipe library',
-      'Priced grocery list with over-budget warnings and cheaper swaps',
-      'Household profiles for allergies and diets',
-      'Spending dashboard for every saved trip',
+      'Weekly meal planner with a Filipino dish library and custom dishes',
+      'Household profiles with allergies, diets, and schedules',
+      'Auto-generated grocery list with budget tracking and Shopping Mode',
+      'Over-budget suggestions powered by a 0/1 knapsack optimizer',
     ],
     story: {
-      problem: 'Families find it hard to plan meals within a weekly budget.',
-      built: 'A meal planner with a priced grocery list, over-budget warnings, cheaper swaps, and a spending dashboard.',
-      result: 'Live.',
+      problem: 'Rising food prices lead Filipino families to overspend and waste food when they shop without a meal plan.',
+      built: 'An offline-first Android app that turns a weekly meal plan into a priced grocery list and suggests cuts when it goes over budget.',
+      result: 'Live. Supports SDG 1 (No Poverty) and SDG 12 (Responsible Consumption).',
     },
   },
 ]
