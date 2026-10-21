@@ -291,17 +291,6 @@ export const extracurriculars = [
     ],
   },
   {
-    title: 'ICT Representative',
-    org: 'Student Government, Richwell Colleges, Incorporated',
-    logo: '/schools/richwell.png',
-    period: '2021 — 2022',
-    bullets: [
-      'Represented the ICT department in the Student Government.',
-      'Coordinated ICT department communications.',
-      'Organized student activities.',
-    ],
-  },
-  {
     title: 'Class Delegate',
     org: 'NU Literates (Student Organization)',
     logo: '/orgs/nu-literates.png',
@@ -310,6 +299,17 @@ export const extracurriculars = [
       'Managed administrative tasks.',
       'Drove member engagement.',
       'Coordinated events.',
+    ],
+  },
+  {
+    title: 'ICT Representative',
+    org: 'Student Government, Richwell Colleges, Incorporated',
+    logo: '/schools/richwell.png',
+    period: '2021 — 2022',
+    bullets: [
+      'Represented the ICT department in the Student Government.',
+      'Coordinated ICT department communications.',
+      'Organized student activities.',
     ],
   },
 ]
