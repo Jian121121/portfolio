@@ -71,7 +71,7 @@ export const about = {
       items: [
         { text: 'Serving as Chief Operating Officer of the AWS Student Builder Group — NU Baliwag.' },
         { text: 'Finishing my BSIT at NU Baliwag (class of 2027).' },
-        { text: 'Fresh off presenting research at IRCITE 2026.' },
+        { text: 'Presented research at an international IT education conference (IRCITE 2026).' },
       ],
       updated: 'Oct 2026',
     },
