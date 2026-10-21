@@ -25,11 +25,34 @@ export default function Experience({ n }) {
           }
         />
 
+        <GroupLabel>Project experience</GroupLabel>
+        <motion.ul {...reveal} variants={stagger(0.06)}>
+          {experience
+            .filter((e) => e.type === 'project')
+            .map((e) => (
+              <Row key={e.title} heading={e.title} sub={e.org} period={e.period} bullets={e.bullets} open={open} />
+            ))}
+          {research.map((r) => (
+            <Row
+              key={r.title}
+              heading={r.title}
+              sub={`${r.role} · ${r.venue}`}
+              period={r.date}
+              bullets={[r.description]}
+              open={open}
+              leading={r.image && <CertThumb src={r.image} name={`${r.title} — certificate`} onOpen={setPreview} />}
+              trailing={<Verify verify={r.verify} />}
+            />
+          ))}
+        </motion.ul>
+
         <GroupLabel>Work</GroupLabel>
         <motion.ul {...reveal} variants={stagger(0.06)}>
-          {experience.map((e) => (
-            <Row key={e.title} heading={e.title} sub={e.org} period={e.period} bullets={e.bullets} open={open} />
-          ))}
+          {experience
+            .filter((e) => e.type !== 'project')
+            .map((e) => (
+              <Row key={e.title} heading={e.title} sub={e.org} period={e.period} bullets={e.bullets} open={open} />
+            ))}
         </motion.ul>
 
         <GroupLabel>Education</GroupLabel>
@@ -42,22 +65,6 @@ export default function Experience({ n }) {
               period={ed.period}
               showPeriod
               leading={<OrgLogo src={ed.logo} name={ed.school} />}
-            />
-          ))}
-        </motion.ul>
-
-        <GroupLabel>Research</GroupLabel>
-        <motion.ul {...reveal} variants={stagger(0.06)}>
-          {research.map((r) => (
-            <Row
-              key={r.title}
-              heading={r.title}
-              sub={`${r.role} · ${r.venue}`}
-              period={r.date}
-              bullets={[r.description]}
-              open={open}
-              leading={r.image && <CertThumb src={r.image} name={`${r.title} — certificate`} onOpen={setPreview} />}
-              trailing={<Verify verify={r.verify} />}
             />
           ))}
         </motion.ul>

@@ -265,6 +265,8 @@ export const experience = [
   {
     title: 'Capstone Project Manager',
     org: 'E-NU Hire — NU Baliwag',
+    // 'project' entries are listed under Project experience instead of Work
+    type: 'project',
     period: '2025 — 2026',
     bullets: [
       'Managed and coordinated development of a web and mobile smart recruitment and candidate screening platform.',
