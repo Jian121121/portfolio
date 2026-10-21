@@ -15,9 +15,9 @@ export function initialsOf(text) {
 export const isCurrent = (period = '') => /present/i.test(period)
 const startYear = (period = '') => period.match(/\d{4}/)?.[0] ?? ''
 
-export function OrgLogo({ src, name }) {
+export function OrgLogo({ src, name, boxed, bg }) {
   const [failed, setFailed] = useState(!src)
-  const box = 'h-10 w-10 shrink-0 rounded-full border border-line overflow-hidden'
+  const box = `shrink-0 border border-line overflow-hidden ${boxed ? 'h-12 w-16 rounded-md' : 'h-10 w-10 rounded-full'}`
   if (failed) {
     return (
       <span aria-hidden className={`${box} flex items-center justify-center bg-surface text-xs font-semibold text-string select-none`}>
@@ -31,7 +31,8 @@ export function OrgLogo({ src, name }) {
       alt={`${name} logo`}
       loading="lazy"
       decoding="async"
-      className={`${box} object-cover bg-ink`}
+      className={`${box} ${boxed ? 'object-contain p-1.5' : 'object-cover'} bg-ink`}
+      style={bg ? { backgroundColor: bg } : undefined}
       onError={() => setFailed(true)}
     />
   )

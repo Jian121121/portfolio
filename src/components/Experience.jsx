@@ -30,7 +30,16 @@ export default function Experience({ n }) {
           {experience
             .filter((e) => e.type === 'project')
             .map((e) => (
-              <Row key={e.title} heading={e.title} sub={e.org} period={e.period} bullets={e.bullets} open={open} />
+              <Row
+                key={e.title}
+                heading={e.title}
+                sub={e.org}
+                period={e.period}
+                bullets={e.bullets}
+                open={open}
+                showPeriod
+                leading={e.logo && <OrgLogo src={e.logo} name={e.org} bg={e.logoBg} boxed />}
+              />
             ))}
           {research.map((r) => (
             <Row
@@ -40,6 +49,7 @@ export default function Experience({ n }) {
               period={r.date}
               bullets={[r.description]}
               open={open}
+              showPeriod
               leading={r.image && <CertThumb src={r.image} name={`${r.title} — certificate`} onOpen={setPreview} />}
               trailing={<Verify verify={r.verify} />}
             />

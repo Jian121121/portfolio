@@ -265,6 +265,8 @@ export const experience = [
   {
     title: 'Capstone Project Manager',
     org: 'E-NU Hire — NU Baliwag',
+    logo: '/projects/ehire-logo.webp',
+    logoBg: '#EEF1FA',
     // 'project' entries are listed under Project experience instead of Work
     type: 'project',
     period: '2025 — 2026',
